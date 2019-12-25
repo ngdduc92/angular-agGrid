@@ -1,5 +1,5 @@
 {
-  "name": "@railinc-apps/sco90-ui",
+  "name": "angular-ag-grid",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -31,8 +31,6 @@
     "@angular/platform-browser": "^7.2.2",
     "@angular/platform-browser-dynamic": "^7.2.2",
     "@angular/router": "^7.2.2",
-    "@railinc/rl-common-ui-lib": "^7.0.18",
-    "@railinc/rl-modals-lib": "^0.0.2",
     "ag-grid-angular": "^20.0.0",
     "ag-grid-community": "^20.0.0",
     "bootstrap": "^4.2.1",
@@ -52,9 +50,6 @@
     "@angular/cli": "^7.2.3",
     "@angular/compiler-cli": "^7.2.2",
     "@angular/language-service": "^7.2.2",
-    "@railinc/sso-connection": "^1.0.1",
-    "@railinc/sso-connection-phantom": "^1.0.0",
-    "@railinc/sso-localdev": "^1.0.0",
     "@types/jasmine": "^2.8.16",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^10.0.0",
@@ -80,8 +75,5 @@
     "dist",
     "README.md",
     "package.json"
-  ],
-  "publishConfig": {
-    "registry": "http://rail-chq-subver:8081/nexus/repository/railinc-npm"
-  }
+  ]
 }
