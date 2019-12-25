@@ -7,7 +7,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "ng serve --proxy-config config/proxy.conf.js",
-    "build:prod": "npm run clean:dist && ng build --prod --base-href=/sco90-web/ --configuration=production",
+    "build:prod": "npm run clean:dist && ng build --prod",
     "build": "npm run build:prod",
     "clean:dist": "npm run rimraf -- dist",
     "clean:install": "npm set progress=false && npm install",
