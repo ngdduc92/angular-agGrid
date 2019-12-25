@@ -1,0 +1,15 @@
+.field-container {
+    display: flex;
+    flex-direction: column;
+}
+.field-container > * {
+    width: 100%;
+}
+.description{
+    margin: 15px 0px;
+}
+
+.progress-bar{
+    margin-left: 15px;
+    margin-right: 15px;
+}

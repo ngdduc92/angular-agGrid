@@ -1,0 +1,128 @@
+html{height: calc(100% - 140px);}
+body{height:100%;}
+body{padding: 0}
+.navbar-default{z-index:1031;}
+/* .rl-navbar {margin: 53px 0 20px 0 !important;}
+ */
+.app-title {margin-left: 10px}
+
+@media(min-width : 768px) and (max-width : 992px){
+	.railinc-nav .navbar-nav > li > a{padding:7px 10px;}
+}
+
+@media(max-width: 767px){
+	.selectionListPanel .scroller{max-height:150px !important;}
+  .xs-margin-top {margin-top: 96px;}
+  html{height:calc(100% - 95px);}
+}
+
+@media(min-width:1200px){
+	.container-fluid.container-xl{width:1170px;}
+}
+
+@media (min-width : 768px){
+	.selectionListControl button{width:100%;}
+}
+
+.label.label-lg{font-size:12px;}
+
+table.table-small tbody tr td,table.table-small thead tr th{font-size:12px;padding:4px;}
+table.table-small tbody tr:hover{background-color:#c4e3f3;}
+table.table-striped > tbody > tr:hover > td {background-color:#c4e3f3;}
+
+.selectionListControl{text-align:center; max-width:240px;}
+.selectionListControl button {width: 105px;position:relative}
+
+@media (max-width: 767px) {
+	.attributeSelection .scroller{max-height:154px;}
+	.selectionListControl button {width: 105px;}
+}
+
+@media (min-width: 992px){
+	.selectionListControl{padding-top:80px;}
+}
+
+.progress {
+  margin-right: 0px;
+  margin-bottom: 0px;
+  height: 16px;
+}
+/* modal dialog service */
+.dialog-header-confirm {
+  background-color: #333; 
+}
+.dialog-header-confirm h4 {
+  color: #fff;
+}
+
+.ng-busy {
+  position: relative !important;
+}
+
+.ng-busy-default-sign {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.whereclause-criteria ul.dropdown-menu{max-width: 400px;}
+
+.whereclause-criteria .whereclause-criteria-attribute ss-multiselect-dropdown,
+.whereclause-criteria .whereclause-criteria-attribute ss-multiselect-dropdown .dropdown,
+.whereclause-criteria .whereclause-criteria-attribute ss-multiselect-dropdown .dropdown button.dropdown-toggle{width:100% !important}
+
+
+ss-multiselect-dropdown > div.dropdown{display: inline-flex;}
+
+
+.card-block{overflow-y: visible !important;}
+
+.top-buffer { margin-top:20px; }
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.monitor-view-name-text {
+  overflow:hidden; 
+  line-height: 1.2em; 
+  max-height: 2.4em; 
+}
+
+.new-event-class {
+  color: blue;
+  font-weight: bold;
+}
+
+.railinc a {
+  color: #911c35;
+  text-decoration: none
+}
+
+.railinc a:hover {
+  color: #c21735;
+  color: #ec042d;
+  text-decoration: none
+}
+
+.railinc h1,.railinc h2,.railinc h3,.railinc h4,.railinc h5,.railinc h6,.railinc h1>span {
+  color: #c21735
+}
+
+.railinc h3 a {
+  color: #880d30
+}
+
+.railinc h3 a:hover {
+  color: #c21735
+}
+
+.navbar-theme.mat-drawer-container, .navbar-theme.mat-drawer {
+  background-color: #727c81;
+}

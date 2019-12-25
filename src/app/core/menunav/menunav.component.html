@@ -1,0 +1,50 @@
+<ng-container *ngFor="let item of menuOptions">
+    <!--- Menu  with no items-->
+    <ng-container *ngIf="!item.children || !item.children.length">
+        <a *ngIf="!item.target" mat-flat-button color="primary" [routerLink]="item.link" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active-link']" [rlPermission]="item.roles">
+            <ng-container *ngIf="item.icon">
+                <span [className]="item.icon.concat(' mr5')"></span>
+            </ng-container>
+            {{item.label}}
+        </a>
+        <a *ngIf="item.target" mat-flat-button color="primary" [attr.href]="item.link" [routerLinkActiveOptions]="{exact:true}" [routerLinkActive]="['active-link']" [rlPermission]="item.roles" [target]="item.target">
+            <ng-container *ngIf="item.icon">
+                <span [className]="item.icon.concat(' mr5')"></span>
+            </ng-container>
+            {{item.label}}
+        </a>
+    </ng-container>
+
+    <!--- Menu  with multiple items -->
+    <ng-container *ngIf="item.children && item.children.length">
+        <a mat-flat-button color="primary" [matMenuTriggerFor]="level1" [routerLinkActive]="['']" [ngClass]="rla.isActive ? 'active-link' : ''" #rla="routerLinkActive">
+            {{item.label}}
+            <span class="fa fa-caret-down"></span>
+        </a>
+        <!-- dropdown menu starts -->
+        <mat-menu #level1="matMenu" hasBackdrop="true" (closed)="closeMenu($event, rla)">
+            <ng-container *ngFor="let menuItem of item.children">
+                <!-- has no submenu, level 1-->
+                <a mat-menu-item *ngIf="!menuItem.children" [routerLink]="menuItem.link" [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact:true}" [rlPermission]="menuItem.roles" [target]="menuItem.target">
+                    {{menuItem.label}}
+                </a>
+
+                <!-- has submenu, level 1-->
+                <ng-container *ngIf="menuItem.children && menuItem.children.length">
+                    <a mat-menu-item [matMenuTriggerFor]="level2">
+                        {{menuItem.label}}
+                    </a>
+                    <mat-menu #level2="matMenu" (closed)="closeMenu($event, rla)">
+                        <ng-container *ngFor="let subMenuItem of menuItem.children">
+                            <a mat-menu-item [routerLink]="subMenuItem.link" [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact:true}" [rlPermission]="subMenuItem.roles" [target]="subMenuItem.target">
+                                {{subMenuItem.label}}
+                            </a>
+                        </ng-container>
+                    </mat-menu>
+                </ng-container>
+
+            </ng-container>
+        </mat-menu>
+
+    </ng-container>
+</ng-container>

@@ -1,0 +1,72 @@
+<app-base-edit [templateRef]='editTemplateRef' (cancelButtonClick)="callCancelDialog($event)"></app-base-edit>
+<ng-template #editTemplateRef>
+  <form [formGroup]="editForm" (change)="formChanged()" >
+    <div fxLayoutGap="10px" >
+      <div class="errorContainer">
+        <mat-label class="success-message" *ngIf="isAlertSuccess">
+          <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    id="icon-success" fill="#009C00" fill-rule="nonzero"></path>
+          </svg>
+          {{messageEnum.successMessage}}
+        </mat-label>
+        <mat-error *ngFor="let errorMessage of errorMessages">
+          <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                    id="icon-failed" fill="red" fill-rule="nonzero"></path>
+          </svg>
+          {{errorMessage.ErrorDescription}}
+        </mat-error>
+      </div>
+      <mat-grid-list cols="1" rowHeight="75px">
+        <mat-grid-tile  cols="3" fxLayoutAlign="start">
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Exception Pool" formControlName="exceptionPool" maxlength="7" [readonly]="data.editType === 'Update'" required
+                     [matTooltip]="getPoolErrorMessage(editForm.controls.exceptionPool)"
+                     [matTooltipDisabled]="!editForm.controls.exceptionPool.invalid">
+              <mat-error *ngIf="editForm.controls.exceptionPool.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.exceptionPool.hasError('pattern')
+                    || editForm.controls.exceptionPool.errors?.minlength">
+                {{messageEnum.poolNumberError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="effectivePicker" [matDatepickerFilter]="startDateFilter" placeholder="Effective Date" (dateChange)="formChanged()" [min]="minDate" formControlName="effectiveDate" required maxlength="10"
+                     [matTooltip]="getDateErrorMessage(editForm.controls.effectiveDate, 'effective')"
+                     [matTooltipDisabled]="!editForm.controls.effectiveDate.invalid">
+              <mat-datepicker-toggle matSuffix [for]="effectivePicker"></mat-datepicker-toggle>
+              <mat-datepicker #effectivePicker [startAt]="today"></mat-datepicker>
+              <mat-error *ngIf="editForm.controls.effectiveDate.errors" >
+                {{getDateErrorMessage(editForm.controls.effectiveDate, 'effective')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="expirationPicker" [matDatepickerFilter]="startDateFilter" placeholder="Expiration Date" (dateChange)="formChanged()" [min]="minDate" formControlName="expirationDate" required maxlength="10"
+                     [matTooltip]="getDateErrorMessage(editForm.controls.expirationDate, 'expiration')"
+                     [matTooltipDisabled]="!editForm.controls.expirationDate.invalid">
+              <mat-datepicker-toggle matSuffix [for]="expirationPicker"></mat-datepicker-toggle>
+              <mat-datepicker #expirationPicker [startAt]="today"></mat-datepicker>
+              <mat-error *ngIf="editForm.controls.expirationDate.errors" >
+                {{getDateErrorMessage(editForm.controls.expirationDate, 'expiration')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div fxLayoutGap="10px" fxLayoutAlign="end" class="mb-3">
+      <button *ngIf="data.editType === 'Update'" mat-raised-button mat-tooltip="Expire Today" [disabled]="isDisableForm" type="button" (click)="onExpireToday()">Expire Today</button>
+      <button *ngIf="data.editType === 'Update'" [disabled]="!wasFormChanged || isDisableForm" mat-raised-button color="primary" mat-tooltip="Modify" type="submit" (click)="onModify()">Modify</button>
+      <button *ngIf="data.editType === 'Add' || data.editType === 'Clone'" [disabled]="editForm.invalid || isDisableForm"  mat-raised-button color="primary" mat-tooltip="Add" type="submit" (click)="onAddNew()">Add</button>
+    </div>
+  </form>
+</ng-template>

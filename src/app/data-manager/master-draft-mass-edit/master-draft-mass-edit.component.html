@@ -1,0 +1,120 @@
+<div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <h1 matDialogTitle>Mass Edit</h1>
+    <button mat-button class="close-button" (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div class="mb-2"></div>
+<div matDialogContent>
+    <form [formGroup]="editForm" (change)="formChanged()">
+        <div fxLayoutGap="10px">
+            <div *ngIf="isLoading">
+                <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+                <div class="description">Processing request...</div>
+            </div>
+            <div class="errorContainer">
+                <mat-label class="success-message" *ngIf="isAlertSuccess">
+                    <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                                id="icon-success" fill="#009C00" fill-rule="nonzero"></path>
+                    </svg>
+                    {{messageEnum.successMessage}}
+                </mat-label>
+                <div class="description" *ngIf="!isAlertSuccess">All currently displayed rows will be affected.</div>
+                <div class="description" *ngIf="isAlertSuccess">{{mainResult}}</div>
+                <div class="description" *ngIf="isAlertSuccess">{{errorText}}</div>
+                <mat-error *ngFor="let errorMessage of errorMessages">
+                    <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                                id="icon-failed" fill="red" fill-rule="nonzero"></path>
+                    </svg>
+                    {{errorMessage.ErrorDescription}}
+                </mat-error>
+            </div>
+            <mat-grid-list cols="1" rowHeight="65px" *ngIf="!isAlertSuccess && !isLoading">
+                <mat-grid-tile fxLayoutAlign="start" >
+                    <mat-form-field class="field-container" fxFlex="100">
+                        <mat-select matSelect placeholder="Field to Edit" formControlName="fieldToEdit"
+                                    (selectionChange)="formChanged()" required>
+                            <mat-option *ngFor="let fieldToEdit of fieldsToEdit"
+                                        (click)="onChangefieldsEdit(fieldToEdit)"
+                                        [value]="fieldToEdit.data">
+                                {{fieldToEdit.label}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="editForm.controls.fieldToEdit.hasError('required')">
+                            {{messageEnum.requiredValue}}
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile fxLayoutAlign="start">
+                    <mat-form-field class="field-container" fxFlex="100">
+                        <input matInput placeholder="New Value" formControlName="newValue" maxlength="4" required>
+                        <mat-error *ngIf="editForm.controls.newValue.hasError('required')">
+                            {{messageEnum.requiredValue}}
+                        </mat-error>
+                        <mat-error *ngIf="editForm.controls.newValue.hasError('pattern')">
+                            {{messageEnum.markError}}
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                    <mat-grid-tile fxLayoutAlign="start">
+                    <mat-form-field class="field-container" fxFlex="100" >
+                        <mat-select matSelect *ngIf="reasonCodes" placeholder="ReasonCode"
+                                    formControlName="reasonCode"
+                                    (selectionChange)="formChanged()" required>
+                            <mat-option *ngFor="let reasonCode of reasonCodes"
+                                        (click)="onChangeReasonCodes(reasonCode)"
+                                        [value]="reasonCode.id">
+                                {{reasonCode.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="editForm.controls.reasonCode.hasError('required')">
+                            {{messageEnum.requiredValue}}
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile fxLayoutAlign="start" >
+                    <mat-form-field class="field-container" fxFlex="100">
+                        <input matInput [matDatepicker]="effectivePicker" placeholder="Effective Date"
+                               (dateChange)="formChanged()" formControlName="effectiveDate" required maxlength="10">
+                        <mat-datepicker-toggle matSuffix [for]="effectivePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #effectivePicker [startAt]="today"></mat-datepicker>
+                        <mat-error
+                                *ngIf="editForm.controls.effectiveDate.errors?.required && (editForm.controls.effectiveDate.dirty || editForm.controls.effectiveDate.touched)">
+                            {{messageEnum.effectiveDateFormatErrAlert}}
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile fxLayoutAlign="start" >
+                    <mat-form-field class="field-container" fxFlex="100">
+                        <input matInput [matDatepicker]="expirationPicker" placeholder="Expiration Date"
+                               (dateChange)="formChanged()" formControlName="expirationDate" required
+                               maxlength="10">
+                        <mat-datepicker-toggle matSuffix [for]="expirationPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #expirationPicker [startAt]="today"></mat-datepicker>
+                        <mat-error
+                                *ngIf="editForm.controls.expirationDate.errors?.required && (editForm.controls.expirationDate.dirty || editForm.controls.expirationDate.touched)">
+                            {{messageEnum.expirationDateFormatErrAlert}}
+                        </mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+
+        <div fxLayoutGap="10px" fxLayoutAlign="end" class="mb-3" *ngIf="!isAlertSuccess && !isLoading">
+            <button mat-raised-button mat-tooltip="Cancel" [disabled]="isAlertSuccess" type="button"
+                    (click)="onCancel()">Cancel
+            </button>
+            <button [disabled]="isAlertSuccess" mat-raised-button color="primary"
+                    mat-tooltip="Submit" type="submit" (click)="onSubmit()">Submit
+            </button>
+
+        </div>
+    </form>
+</div>
+
+
+

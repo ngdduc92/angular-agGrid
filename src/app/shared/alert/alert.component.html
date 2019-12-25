@@ -1,0 +1,21 @@
+<ng-container *ngIf="messages.length">
+    <div *ngFor="let message of messages; let i = index" class="d-flex" [ngClass]="{
+      alert: message,
+      'alert-primary': message.type === 'info',
+      'alert-success': message.type === 'success',
+      'alert-danger': message.type === 'error',
+      'alert-warning': message.type === 'warning'
+    }" role="alert" style="position: relative;">
+        <a (click)="dismissAlert(i)" style="cursor: pointer; position: absolute; top: 0.5em; right: 0.5em;" *ngIf="allowDismiss">
+            <span class="fa fa-times"></span>
+        </a>
+
+        <span class="fas fa-2x set-left" [ngClass]="{
+        'fa-exclamation-circle': message.type === 'warning',
+        'fa-info-circle': message.type === 'info',
+        'fa-check-circle': message.type === 'success',
+        'fa-exclamation-triangle': message.type === 'error'
+      }"></span>
+        <span class="font-weight-bold ml-3" [innerHTML]="message.text"></span>
+    </div>
+</ng-container>

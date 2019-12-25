@@ -1,0 +1,33 @@
+[
+    
+    {
+        "userId" : "DEVADUSR",
+        "permissions": [
+            {
+                "role": "SCO90APPADM",
+                "MARK": [
+                    "BNSF",
+                    "RAIL"
+                ]
+            }
+        ],
+        "profile": "USERID=DEVADUSR*FIRST_NAME=Matthew*LAST_NAME=Gifford*EMAIL=matthew.gifford@railinc.com*TITLE=Sr Software Developer*COMPANY=RAILINC CORPORATION*PHONE=1.9196515094*ADDRESS1=7001 Weston Parkway*CITY=Cary*STATE=NC*ZIP=27511*COUNTRY=US"
+    },
+    {
+        "userId" : "ITMXG02",
+        "permissions": [
+            {
+                "role": "LOA2USER",
+                "MARK": [
+                    "RAIL",
+                    "UP"
+                ]
+            },
+            {
+                "role": "FURAPPADM"
+            }
+        ],
+        "profile": "USERID=ITMXG02*FIRST_NAME=Matthew*LAST_NAME=Gifford*EMAIL=matthew.gifford@railinc.com*TITLE=Sr Software Developer*COMPANY=RAILINC CORPORATION*PHONE=1.9196515094*ADDRESS1=7001 Weston Parkway*CITY=Cary*STATE=NC*ZIP=27511*COUNTRY=US"
+    }
+    
+]

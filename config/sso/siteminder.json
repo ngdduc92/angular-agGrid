@@ -1,0 +1,18 @@
+{
+  "local": {
+    "authenticationUrl": "",
+    "applicationUrl": "http://localhost:8080/",
+    "serviceContext": [""]
+  },
+  "dev": {
+    "authenticationUrl": "https://wwwdev.railinc.com/Aauth/fcc/shim.fcc?TYPE=33554433&REALMOID=06-000c3545-818d-1de6-858f-f4160aa00062&GUID=0&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-d8sNfMTALeGMn39auBLD0YtjOf77pxnI8U%2breUHnFA3bFO1X3HVtiZe2qcHbR%2bbw&TARGET=-SM-https%3a%2f%2fwwwdev%2erailinc%2ecom%2fsco90--service%2fservices%2f",
+    "applicationUrl": "https://wwwdev.railinc.com/sco90-service/services/",
+    "serviceContext": [""]
+  },
+  "tst": {
+    "authenticationUrl": "https://wwwtst.railinc.com/Aauth/fcc/shim.fcc?TYPE=33554433&REALMOID=06-000c3545-818d-1de6-858f-f4160aa00062&GUID=0&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-d8sNfMTALeGMn39auBLD0YtjOf77pxnI8U%2breUHnFA3bFO1X3HVtiZe2qcHbR%2bbw&TARGET=-SM-https%3a%2f%2fwwwdev%2erailinc%2ecom%2fsco90--service%2fservices%2f",
+    "applicationUrl": "https://wwwtst.railinc.com/sco90-service/services",
+    "serviceContext": [""]
+  }
+}
+

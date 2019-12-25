@@ -1,0 +1,125 @@
+{
+    "AppConfig": [
+      {
+        "DisplayOrder": "6",
+        "DisplayName": "Carmarks",
+        "DbTableName": "SCO_CARMARKS",
+        "UrlView": "/sco90/services/view/carmarks",
+        "UrlExpire": "/sco90/services/manage/carmarks/expire",
+        "UrlUpdate": "/sco90/services/manage/carmarks/update",
+        "UrlAdd": "/sco90/services/manage/carmarks/create"
+      },
+      {
+        "DisplayOrder": "9",
+        "DisplayName": "Direct Connects",
+        "DbTableName": "SCO_CONNECTS",
+        "UrlView": "/sco90/services/view/connects",
+        "UrlExpire": "/sco90/services/manage/connects/expire",
+        "UrlUpdate": "/sco90/services/manage/connects/update",
+        "UrlAdd": "/sco90/services/manage/connects/create"
+      },
+      {
+        "DisplayOrder": "5",
+        "DisplayName": "ECODE Exception Pool Numbers",
+        "DbTableName": "SCO_EXCEPTION_POOL",
+        "UrlView": "/sco90/services/view/exceptionPools",
+        "UrlExpire": "/sco90/services/manage/exceptionPools/expire",
+        "UrlUpdate": "/sco90/services/manage/exceptionPools/update",
+        "UrlAdd": "/sco90/services/manage/exceptionPools/create"
+      },
+      {
+        "DisplayOrder": "4",
+        "DisplayName": "Joint Industry Pairs",
+        "DbTableName": "SCO_JOINT_INDPAIRS",
+        "UrlView": "/sco90/services/view/jointIndustryPairs",
+        "UrlExpire": "/sco90/services/manage/jointIndustryPairs/expire",
+        "UrlUpdate": "/sco90/services/manage/jointIndustryPairs/update",
+        "UrlAdd": "/sco90/services/manage/jointIndustryPairs/create"
+      },
+      {
+        "DisplayOrder": "10",
+        "DisplayName": "Network ID",
+        "DbTableName": "SCO_NETWORK_ID",
+        "UrlView": "/sco90/services/view/networkIds",
+        "UrlExpire": "/sco90/services/manage/networkIds/expire",
+        "UrlUpdate": "/sco90/services/manage/networkIds/update",
+        "UrlAdd": "/sco90/services/manage/networkIds/create"
+      },
+      {
+        "DisplayOrder": "11",
+        "DisplayName": "No Interchange Reporting Roads",
+        "DbTableName": "SCO_NOINCH_REPT",
+        "UrlView": "/sco90/services/view/noInterchangeReports",
+        "UrlExpire": "/sco90/services/manage/noInterchangeReports/expire",
+        "UrlUpdate": "/sco90/services/manage/noInterchangeReports/update",
+        "UrlAdd": "/sco90/services/manage/noInterchangeReports/create"
+      },
+      {
+        "DisplayOrder": "12",
+        "DisplayName": "No Release Reporting Roads",
+        "DbTableName": "SCO_NORLSE_REPT",
+        "UrlView": "/sco90/services/view/noReleaseReports",
+        "UrlExpire": "/sco90/services/manage/noReleaseReports/expire",
+        "UrlUpdate": "/sco90/services/manage/noReleaseReports/update",
+        "UrlAdd": "/sco90/services/manage/noReleaseReports/create"
+      },
+      {
+        "DisplayOrder": "13",
+        "DisplayName": "Participants",
+        "DbTableName": "SCO_PARTICIPANT",
+        "UrlView": "/sco90/services/view/participants",
+        "UrlExpire": "/sco90/services/manage/participants/expire",
+        "UrlUpdate": "/sco90/services/manage/participants/update",
+        "UrlAdd": "/sco90/services/manage/participants/create"
+      },
+      {
+        "DisplayOrder": "2",
+        "DisplayName": "SCO90 Master",
+        "DbTableName": "SCO_MASTER",
+        "UrlView": "/sco90/services/view/masters",
+        "UrlExpire": "/sco90/services/manage/masters/expire",
+        "UrlUpdate": "/sco90/services/manage/masters/update",
+        "UrlAdd": "/sco90/services/manage/masters/create"
+      },
+      {
+        "DisplayOrder": "14",
+        "DisplayName": "Quarterly Rate",
+        "DbTableName": "SCO_RATE",
+        "UrlView": "/sco90/services/view/rates",
+        "UrlUpdate": "/sco90/services/manage/rates/update"
+      },
+      {
+        "DisplayOrder": "15",
+        "DisplayName": "Special Family",
+        "DbTableName": "SCO_HOME_ROAD",
+        "UrlView": "/sco90/services/view/homeRoads",
+        "UrlExpire": "/sco90/services/manage/homeRoads/expire",
+        "UrlUpdate": "/sco90/services/manage/homeRoads/update",
+        "UrlAdd": "/sco90/services/manage/homeRoads/create"
+      },
+      {
+        "DisplayOrder": "7",
+        "DisplayName": "Trade Name Family",
+        "DbTableName": "SCO_FAMILY_ROADS",
+        "UrlView": "/sco90/services/view/familyRoads",
+        "UrlExpire": "/sco90/services/manage/familyRoads/expire",
+        "UrlUpdate": "/sco90/services/manage/familyRoads/update",
+        "UrlAdd": "/sco90/services/manage/familyRoads/create"
+      },
+      {
+        "DisplayOrder": "1",
+        "DisplayName": "SCO90 Master Edit",
+        "DbTableName": "SCO_MASTER_DRAFT",
+        "UrlView": "/sco90/services/view/masterDrafts",
+        "UrlExpire": "/sco90/services/manage/masterDrafts/expire",
+        "UrlUpdate": "/sco90/services/manage/masterDrafts/update",
+        "UrlAdd": "/sco90/services/manage/masterDrafts/create"
+      },
+      {
+        "DisplayOrder": "8",
+        "DisplayName": "Carmark / Trade Name",
+        "DbTableName": "SCO_CTN_COMBO",
+        "UrlView": "/sco90/services/view/carmarkTradeNameCombo"
+      }
+    ]
+}

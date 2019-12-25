@@ -1,0 +1,50 @@
+[
+    {
+        "equipmentId": "BNSF000001001",
+        "componentInfo": null,
+        "noticeId": "MA001",
+        "markOwner": "BNSF",
+        "umlerOwner": "BNSF",
+        "lessee": null,
+        "mechDesign": "RBL",
+        "equipmentStatus": "A",
+        "assignmentDate": "10/12/2017",
+        "ein": "00786787876"
+    },
+    {
+        "equipmentId": "BNSF000001002",
+        "componentInfo": null,
+        "noticeId": "MA001",
+        "markOwner": "BNSF",
+        "umlerOwner": "BNSF",
+        "lessee": null,
+        "mechDesign": "D",
+        "equipmentStatus": "A",
+        "assignmentDate": "10/12/2017",
+        "ein": "00032313332"
+    },
+    {
+        "equipmentId": "BNSF000001003",
+        "componentInfo": null,
+        "noticeId": "MA003",
+        "markOwner": "BNSF",
+        "umlerOwner": "BNSF",
+        "lessee": null,
+        "mechDesign": "RBL",
+        "equipmentStatus": "A",
+        "assignmentDate": "11/22/2018",
+        "ein": "00786781968"
+    },
+    {
+        "equipmentId": "BNSF000001004",
+        "componentInfo": null,
+        "noticeId": "MA004",
+        "markOwner": "BNSF",
+        "umlerOwner": "BNSF",
+        "lessee": null,
+        "mechDesign": "D",
+        "equipmentStatus": "A",
+        "assignmentDate": "10/12/2017",
+        "ein": "00012343332"
+    }
+]

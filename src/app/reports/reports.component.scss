@@ -1,0 +1,87 @@
+a {
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+mat-card {
+    margin-bottom: 100px;
+}
+
+.report-download-form {
+    width: 66%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#alert-message {
+    color: #009C00;
+    padding-top:20px;
+}
+
+#alert-message .alert-error {
+    color: red;
+    padding-top:20px;
+}
+
+#alert-message .icon-success {
+    margin-top: -3px;
+    margin-right: 5px;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 10px;
+}
+
+::ng-deep .mat-select-value {
+    padding-bottom: 1px;
+}
+
+.transportation-code {
+    margin: 10px 0px;
+    text-align: left;
+}
+
+mat-radio-button {
+    margin-right: 60px;
+    margin-left: 10px;
+}
+
+.agree-terms {
+    margin-top:10px;
+}
+.agree-terms-checkbox {
+    float: left;
+    margin-right: 5px;
+}
+
+.agree-terms-title {
+    width: 95%;
+    float: left;
+}
+
+.link-report {
+    height: 30px;
+    width: 100%;
+    float: left;
+}
+
+.link-report-button {
+    padding: 5px;
+    cursor: pointer;
+    margin: 10px 0px !important;
+}
+
+.link-report-button:hover {
+    background-color: #e2a3a3;
+}
+
+.download-report {
+    width: 100%;
+}
+
+.mat-raised-button {
+    margin: 10px 0px !important;
+    width: 250px;
+    float: right;
+}

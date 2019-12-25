@@ -1,0 +1,39 @@
+<div fxLayout="row" fxLayoutAlign="space-between baseline">
+  <h1 matDialogTitle>Refresh Data</h1>
+  <button mat-button class="close-button" (click)="onCancel()" ><mat-icon>close</mat-icon></button>
+</div>
+<mat-dialog-content style="min-height: 80px;">
+  <div fxLayoutGap="10px" >
+    <div class="errorContainer">
+      <mat-label class="success-message" *ngIf="isAlertSuccess && !isRefresh">
+        <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  id="icon-success" fill="#009C00" fill-rule="nonzero"></path>
+        </svg>
+        {{messageEnum.refreshAllDataSuccess}}
+      </mat-label>
+      <mat-error *ngIf="isAlertFailure && !isRefresh">
+        <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  id="icon-failed" fill="red" fill-rule="nonzero"></path>
+        </svg>
+        {{messageEnum.refreshAllDataFailure}}
+      </mat-error>
+    </div>
+  </div>
+  <div *ngIf="isRefresh">
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+    <div class="description">Refreshing Data...</div>
+  </div>
+  <p *ngIf="!isAlertSuccess && !isAlertFailure && !isRefresh">
+    {{messageEnum.refreshAllDataConfirmMessage}}
+  </p>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button *ngIf="!isAlertSuccess && !isAlertFailure" mat-raised-button mat-dialog-close (click)="onCancel()" tabindex="-1">Cancel</button>
+  <button *ngIf="isAlertSuccess || isAlertFailure" mat-raised-button mat-dialog-close (click)="onCancel()" tabindex="-1">Close</button>
+  <button *ngIf="!isAlertSuccess && !isAlertFailure" mat-raised-button color="primary" (click)="onConfirmClick()">OK</button>
+
+</mat-dialog-actions>

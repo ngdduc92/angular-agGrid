@@ -1,0 +1,24 @@
+<block-ui></block-ui>
+<railinc-application
+  class="railinc"
+  [applicationName]="applicationName"
+  [railincUser]="user"
+  [showMarkSelection]="showMarkSelection"
+  [applicationList]="applicationList"
+  [showTopmenu]="showTopmenu"
+  [menuOptions]="menuOptions"
+  [showSidenav]="showSidenav"
+  [sidenavPosition]="sidenavPosition"
+  [sidenavMode]="sidenavMode"
+  (onExpandedSidenav)="handleExpandedSidenav($event)"
+>
+  <railinc-menunav>
+    <menunav [menuOptions]="menuOptions"></menunav>
+  </railinc-menunav>
+  <railinc-sidenav>
+    <sidenav
+      [isSidenavExpanded]="isSidenavExpanded"
+      (onSelectSidenavItem)="handleSelectSidenavItem($event)"
+    ></sidenav>
+  </railinc-sidenav>
+</railinc-application>

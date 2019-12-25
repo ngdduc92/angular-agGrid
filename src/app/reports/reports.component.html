@@ -1,0 +1,61 @@
+<div class="container pt-3">
+    <alert-container [channel]="channelName" allowDismiss="true"></alert-container>
+    <mat-card class="card">
+        <mat-card-title class="card-title railinc">
+            <h5>Download Reports</h5>
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content class="table-content">
+            <div>
+                <form class="report-download-form">
+                    <mat-form-field>
+                        <mat-label>Roadmark</mat-label>
+                        <mat-select id="road-marks" [formControl]="roadMarksFormControl" color="primary">
+                            <mat-option *ngFor="let roadMark of roadMarks" [value]="roadMark.Mark">
+                                {{roadMark.Mark}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Quarter</mat-label>
+                        <mat-select id="quarters" [formControl]="quartersFormControl" color="primary">
+                            <mat-option *ngFor="let quarter of quarters" [value]="quarter.value">
+                                {{quarter.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="transportation-code">
+                        Transportation Code:
+                        <mat-radio-group aria-label="" [formControl]="transportationCodeFormControl" color="primary">
+                            <mat-radio-button value="1" color="primary">T Code</mat-radio-button>
+                            <mat-radio-button value="2" color="primary">E Code</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <mat-form-field>
+                        <mat-label>Report type</mat-label>
+                        <mat-select id="report_types" [formControl]="reportTypesFormControl" color="primary">
+                            <mat-option *ngFor="let report_type of report_types" [value]="report_type.value">
+                                {{report_type.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="agree-terms">
+                        <mat-checkbox [formControl]="agreeTermsFormControl" class="agree-terms-checkbox" color="primary"></mat-checkbox>
+                        <p class="agree-terms-title">By downloading this data, you agree to <a href='https://www.railinc.com/rportal/web/guest/terms' target='_blank'>Railinc's Terms of Service </a> which limits data use and restricts distribution without prior Railinc agreement.</p>
+                    </div>
+
+                    <div class="link-report">
+                        <span *ngIf="reportUrl" class="link-report-button" (click)="downloadFile()"><b>{{reportTitle}}</b></span>
+                    </div>
+                    <div class="download-report">
+                        <button mat-raised-button color="primary" (click)="downloadReports()" [disabled]="!agreeTermsFormControl.value">Download Report</button><br><br>
+                    </div>
+
+                </form>
+            </div>
+            <div style="clear:both"></div>
+        </mat-card-content>
+    </mat-card>
+</div>

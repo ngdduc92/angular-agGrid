@@ -1,0 +1,24 @@
+[
+    {
+        "noticeCategory": "EW",
+        "noticeNum": 5936,
+        "supplementNum": 2,
+        "effectiveDate": "",
+        "equipAssign": 1,
+        "equipCurrentAssign": 3,
+        "componentRegistry": "Yes",
+        "fileNum": "002",
+        "title": "QA: Test defect DE22315,part5"
+    },
+    {
+        "noticeCategory": "MA",
+        "noticeNum": 5935,
+        "supplementNum": 3,
+        "effectiveDate": "10/10/2017",
+        "equipAssign": 1,
+        "equipCurrentAssign": 4,
+        "componentRegistry": "No",
+        "fileNum": "65465",
+        "title": "QA: Test defect 22313"
+    }
+]

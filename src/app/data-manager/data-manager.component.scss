@@ -1,0 +1,73 @@
+.top-dropdown {
+  min-width: 100%;
+  padding: 24px;
+}
+
+.card {
+  min-width: 100%;
+  min-height: 70vh;
+  padding: 10px 24px;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 65vh;
+  height: 100%;
+}
+
+.table-container .table-bar{
+  margin-bottom: 5px;
+}
+
+.table-container .table-bar .clear-filters{
+  margin: 0px 0px 0px 10px !important;
+  padding: 0px 5px;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+a {
+  cursor: pointer;
+}
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 30px;
+}
+
+.field-container{
+  margin: 10px 20px;
+}
+#print-content {
+  width: 100%;
+}
+
+#print-content table, th, td {
+  //text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px !important;
+  table-layout: fixed;
+  color: black;
+}
+
+#print-content th {
+  height: 46px;
+  padding-left: 5px;
+  border: 1px solid black;
+}
+
+#print-content td {
+  height: 35px;
+  padding-left: 5px;
+  border: 1px solid black;
+}
+

@@ -1,0 +1,27 @@
+<mat-nav-list class="sidenav navbar-theme mt-3">
+        <a mat-list-item routerLink="/home">
+            <mat-icon mat-list-icon class="d-flex">
+                <i class="fas fa-home fa-xs"></i>
+            </mat-icon>
+            <p matLine *ngIf="isSidenavExpanded">Main App</p>
+        </a>
+        <mat-divider></mat-divider>
+    <a mat-list-item routerLink="/sports/basketball">
+        <mat-icon mat-list-icon class="d-flex">
+            <i class="fas fa-basketball-ball fa-xs"></i>
+        </mat-icon>
+        <p matLine *ngIf="isSidenavExpanded">Basketball</p>
+    </a>
+    <a mat-list-item routerLink="/sports/volleyball">
+        <mat-icon mat-list-icon class="d-flex">
+            <i class="fas fa-volleyball-ball fa-xs"></i>
+        </mat-icon>
+        <p matLine *ngIf="isSidenavExpanded">Volleyball</p>
+    </a>
+    <a mat-list-item routerLink="/sports/baseball">
+        <mat-icon mat-list-icon class="d-flex">
+            <i class="fas fa-baseball-ball fa-xs"></i>
+        </mat-icon>
+        <span matLine *ngIf="isSidenavExpanded">Baseball</span>
+    </a>
+</mat-nav-list>

@@ -1,0 +1,8 @@
+<div class="mat-dialog-header" fxLayout="row" fxLayoutAlign="space-between baseline" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    <h5 matDialogTitle >{{formTitle()}}</h5>
+    <button mat-button class="close-button" (click)="cancelButtonClick.emit($event)" ><mat-icon>close</mat-icon></button>
+</div>
+<div class="mb-2"></div>
+<div matDialogContent >
+    <ng-container *ngTemplateOutlet='templateRef'></ng-container>
+</div>

@@ -1,0 +1,49 @@
+<div class="container pt-3">
+    <alert-container [channel]="channelName" allowDismiss="true"></alert-container>
+    <mat-card class="card">
+        <mat-card-title class="card-title railinc">
+            <h5>Admin Functions</h5>
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content class="table-content">
+            <form class="reports-form">
+                <div>
+                    <h5 class="text-dark">Generate Reports</h5>
+                    <p>
+                        Note: &nbsp;If reports are generated more than once during this quarter, the newly generated reports will be saved over the old reports for this quarter. After reports have been generated, they will remain invisible to non-Railinc users until they have
+                        been released.
+                    </p>
+                    <button class="selected-reports-btn" mat-raised-button color="primary" (click)="generateReports()" [disabled]="hasLoading">Generate Reports</button>
+                </div>
+                <br>
+                <div style="clear:both"></div>
+                <div>
+                    <h5 class="text-dark">Release Reports</h5>
+                    <mat-form-field>
+                        <mat-label>Quarter</mat-label>
+                        <mat-select id="quarters" [formControl]="quartersFormControl" color="primary">
+                            <mat-option *ngFor="let quarter of quarters" [value]="quarter.value">
+                                {{quarter.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <span class="report_types-lable">Report type</span>
+
+                    <mat-list role="list" id="report_types_list">
+                        <mat-list-item class="report_type_item" [ngClass]="{active: selectedReportTypes.indexOf(report_type.value) > -1}" *ngFor="let report_type of report_types" role="listitem" (click)="selectedReportType($event,report_type.value)">
+                            {{report_type.viewValue}}
+                        </mat-list-item>
+                    </mat-list>
+
+                    <button mat-raised-button (click)="selectAllReportTypes()">Select All</button><br>
+                    <mat-checkbox color="primary" [formControl]="sendReportEmailsFormControl">Send Email Notifications</mat-checkbox><br>
+
+                    <button class="selected-reports-btn" mat-raised-button color="primary" (click)="releaseReports('release')" [disabled]="hasLoading">Release Selected Reports</button>
+                    <button class="selected-reports-btn" mat-stroked-button color="primary" (click)="releaseReports('block')" [disabled]="hasLoading">Block Selected Reports</button>
+                </div>
+            </form>
+            <div style="clear:both"></div>
+        </mat-card-content>
+    </mat-card>
+</div>

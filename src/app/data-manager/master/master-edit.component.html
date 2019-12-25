@@ -1,0 +1,178 @@
+<app-base-edit [templateRef]='editTemplateRef' (cancelButtonClick)="callCancelDialog($event)"></app-base-edit>
+<ng-template #editTemplateRef>
+  <form [formGroup]="editForm" (change)="formChanged()" >
+    <div fxLayoutGap="10px" >
+      <div class="errorContainer">
+        <mat-label class="success-message" *ngIf="isAlertSuccess">
+          <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                    id="icon-success" fill="#009C00" fill-rule="nonzero"></path>
+          </svg>
+          {{messageEnum.successMessage}}
+        </mat-label>
+        <mat-error *ngFor="let errorMessage of errorMessages">
+          <svg width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                    id="icon-failed" fill="red" fill-rule="nonzero"></path>
+          </svg>
+          {{errorMessage.ErrorDescription}}
+        </mat-error>
+      </div>
+      <mat-grid-list cols="1" rowHeight="75px">
+        <mat-grid-tile  cols="3" fxLayoutAlign="start">
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Equipment Mark" formControlName="equipmentMark" maxlength="4" required
+                     [matTooltip]="getMarkErrorMessage(editForm.controls.equipmentMark)"
+                     [matTooltipDisabled]="!editForm.controls.equipmentMark.invalid">
+              <mat-error *ngIf="editForm.controls.equipmentMark.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.equipmentMark.hasError('pattern')
+                  || editForm.controls.equipmentMark.errors?.minlength">
+                {{messageEnum.markError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Delivery Carrier" formControlName="deliveryCarrier" maxlength="4" required
+                     [matTooltip]="getMarkErrorMessage(editForm.controls.deliveryCarrier)"
+                     [matTooltipDisabled]="!editForm.controls.deliveryCarrier.invalid">
+              <mat-error *ngIf="editForm.controls.deliveryCarrier.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.deliveryCarrier.hasError('pattern')
+                  || editForm.controls.deliveryCarrier.errors?.minlength">
+                {{messageEnum.markError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Receiving Carrier" formControlName="receivingCarrier" maxlength="4" required
+                     [matTooltip]="getMarkErrorMessage(editForm.controls.receivingCarrier)"
+                     [matTooltipDisabled]="!editForm.controls.receivingCarrier.invalid">
+              <mat-error *ngIf="editForm.controls.receivingCarrier.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.receivingCarrier.hasError('pattern') 
+                || editForm.controls.receivingCarrier.errors?.minlength">
+                {{messageEnum.markError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile cols="3" fxLayoutAlign="start">
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Outlet SPLC" formControlName="outletSPLC" maxlength="9" required
+                     [matTooltip]="getSPLCErrorMessage(editForm.controls.outletSPLC)"
+                     [matTooltipDisabled]="!editForm.controls.outletSPLC.invalid">
+              <mat-error *ngIf="editForm.controls.outletSPLC.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.outletSPLC.hasError('pattern')
+                || editForm.controls.outletSPLC.errors?.minlength">
+                {{messageEnum.splcError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Outlet City" formControlName="outletCity" [required]="isBilateral"
+                     [matTooltip]="getMarkErrorMessage(editForm.controls.outletCity)"
+                     [matTooltipDisabled]="!editForm.controls.outletCity.invalid">
+              <mat-error *ngIf="editForm.controls.outletCity.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Outlet State" formControlName="outletState" maxlength="2" [required]="isBilateral"
+                     [matTooltip]="getMarkErrorMessage(editForm.controls.outletState)"
+                     [matTooltipDisabled]="!editForm.controls.outletState.invalid">
+              <mat-error *ngIf="editForm.controls.outletState.hasError('required')">
+                {{messageEnum.requiredValue}}
+              </mat-error>
+              <mat-error *ngIf="editForm.controls.outletState.hasError('pattern')
+                || editForm.controls.outletState.errors?.minlength">
+                {{messageEnum.stateExactlyError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile cols="3" fxLayoutAlign="start">
+          <div class="field-container" fxFlex >
+            <mat-form-field fxFlex>
+              <mat-select matSelect *ngIf="interchangeTypes" placeholder="Interchange Type" (selectionChange)="formChanged()" formControlName="interchangeType" required
+                          [matTooltip]="getMarkErrorMessage(editForm.controls.interchangeType)"
+                          [matTooltipDisabled]="!editForm.controls.interchangeType.invalid">
+                <mat-option *ngFor="let interchangeType of interchangeTypes" (click)="onChangeInterchangeTypes(interchangeType)" [value]="interchangeType.id">
+                  {{interchangeType.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="editForm.controls.interchangeType.hasError('required')" >
+                {{messageEnum.requiredValue}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <mat-select matSelect *ngIf="reasonCodes" placeholder="ReasonCode" formControlName="reasonCode" (selectionChange)="formChanged()" required
+                          [matTooltip]="getMarkErrorMessage(editForm.controls.reasonCode)"
+                          [matTooltipDisabled]="!editForm.controls.reasonCode.invalid">
+                <mat-option *ngFor="let reasonCode of reasonCodes" (click)="onChangeReasonCodes(reasonCode)" [value]="reasonCode.id">
+                  {{reasonCode.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="editForm.controls.reasonCode.hasError('required')" >
+                {{messageEnum.requiredValue}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex></div>
+        </mat-grid-tile>
+        <mat-grid-tile cols="3" fxLayoutAlign="start">
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="effectivePicker" [matDatepickerFilter]="startDateFilter" placeholder="Effective Date" (dateChange)="formChanged()" [min]="minDate" formControlName="effectiveDate" required maxlength="10"
+                     [matTooltip]="getDateErrorMessage(editForm.controls.effectiveDate, 'effective')"
+                     [matTooltipDisabled]="!editForm.controls.effectiveDate.invalid">
+              <mat-datepicker-toggle matSuffix [for]="effectivePicker"></mat-datepicker-toggle>
+              <mat-datepicker #effectivePicker [startAt]="today"></mat-datepicker>
+              <mat-error *ngIf="editForm.controls.effectiveDate.errors" >
+                {{getDateErrorMessage(editForm.controls.effectiveDate, 'effective')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="expirationPicker" [matDatepickerFilter]="startDateFilter" placeholder="Expiration Date" (dateChange)="formChanged()" [min]="minDate" formControlName="expirationDate" required maxlength="10"
+                     [matTooltip]="getDateErrorMessage(editForm.controls.expirationDate, 'expiration')"
+                     [matTooltipDisabled]="!editForm.controls.expirationDate.invalid">
+              <mat-datepicker-toggle matSuffix [for]="expirationPicker"></mat-datepicker-toggle>
+              <mat-datepicker #expirationPicker [startAt]="today"></mat-datepicker>
+              <mat-error *ngIf="editForm.controls.expirationDate.errors" >
+                {{getDateErrorMessage(editForm.controls.expirationDate, 'expiration')}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field-container" fxFlex>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div fxLayoutGap="10px" fxLayoutAlign="end" class="mb-3">
+      <button *ngIf="data.editType === 'Update'" mat-raised-button mat-tooltip="Clone" [disabled]="isDisableForm" type="button" (click)="onClone()">Clone</button>
+      <button *ngIf="data.editType === 'Update'" mat-raised-button mat-tooltip="Expire Today" [disabled]="isDisableForm" type="button" (click)="onExpireToday()">Expire Today</button>
+      <button *ngIf="data.editType === 'Update' && isMasterDraft()" mat-raised-button mat-tooltip="Revert" [disabled]="isDisableForm" type="button" (click)="onRevert()">Revert</button>
+      <button *ngIf="data.editType === 'Update'" [disabled]="!wasFormChanged || isDisableForm" mat-raised-button color="primary" mat-tooltip="Modify" type="submit" (click)="onModify()">Modify</button>
+      <button *ngIf="data.editType === 'Add' || data.editType === 'Clone'" [disabled]="editForm.invalid || isDisableForm"  mat-raised-button color="primary" mat-tooltip="Add" type="submit" (click)="onAddNew()">Add</button>
+    </div>
+  </form>
+</ng-template>
+

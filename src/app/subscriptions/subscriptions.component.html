@@ -1,0 +1,33 @@
+<div class="container pt-3">
+  <mat-card class="card">
+      <mat-card-title class="card-title railinc">
+      <h5>Subscription Profile</h5>
+      </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content class="table-content">
+          <p id="alert-message" *ngIf="hasAlertMessage">
+              <svg *ngIf="isAlertSuccess" width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                  id="icon-success" fill="#009C00" fill-rule="nonzero"></path>
+              </svg>
+              <svg *ngIf="!isAlertSuccess" width="26px" height="26px" viewBox="0 2 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                  id="icon-failed" fill="red" fill-rule="nonzero"></path>
+              </svg>
+              <span id="message">{{message!}}</span>
+          </p>
+          
+          <div>
+            <form class="subscription-form">
+                <span>MQ</span>
+                <mat-checkbox [formControl]="mqFormControl" color="primary" (click)="formIsDirty = true"></mat-checkbox><br>
+                <span>Email</span>
+                <mat-checkbox [formControl]="emailFormControl" class="email" color="primary" (click)="formIsDirty = true"></mat-checkbox><br>
+                <button mat-raised-button class="save-subscriptions-btn" color="primary" (click)="saveSubscriptions()" [disabled]="!formIsDirty">Save</button><br><br>
+            </form>
+          </div>
+      </mat-card-content>
+  </mat-card>
+</div>

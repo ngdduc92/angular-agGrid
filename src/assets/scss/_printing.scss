@@ -1,0 +1,39 @@
+@media print { 
+  @page {
+    size: A4;
+    margin: 0;
+    padding: 0;
+  }
+
+  @-moz-document url-prefix() { 
+    @page {
+      margin: 5px;
+    }
+
+    #print-content table {
+      margin: 5px;
+    }
+  }
+
+  html, body {
+    width: 210mm;
+    height: auto;
+    //font-size: 11px;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #print-content, #print-content * {
+    visibility: visible;
+  }
+
+  #print-content {
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+  }
+}
