@@ -36,7 +36,7 @@
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.3",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng-block-ui": "^2.1.0",
     "ngx-cookie-service": "^2.1.0",
     "ngx-toastr": "^9.1.1",
